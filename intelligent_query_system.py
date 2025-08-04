@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 import json
 import logging
 from typing import Dict, List, Optional, Any, Tuple
@@ -19,7 +22,7 @@ from sentence_transformers import SentenceTransformer
 import pickle
 
 # LLM integration using Groq
-from groq import Groq
+import google.generativeai as genai
 
 # Additional utilities
 import tiktoken
@@ -333,9 +336,9 @@ class VectorDatabase:
 class LLMProcessor:
     """Handles LLM interactions for query processing and response generation using Groq."""
     
-    def __init__(self, api_key: str, model: str = "llama3-70b-8192"):
-        self.client = Groq(api_key=api_key)
-        self.model = model
+    def __init__(self, model: str = "gemini-1.0-pro"):
+        genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.tokenizer = tiktoken.get_encoding("cl100k_base") 
         
         # Model-specific configurations
@@ -375,22 +378,22 @@ Example format:
 JSON Response:"""
         
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=1000,
-                top_p=0.9
+            response = self.model.generate_content(
+                contents=[{"role": "user", "parts": [prompt]}],
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.1,
+                    max_output_tokens=1000,
+                )
             )
             
-            content = response.choices[0].message.content.strip()
+            content = response.text.strip()
             
-            # Try to parse JSON, with fallback handling
+            
             try:
                 result = json.loads(content)
                 return result.get("clauses", [])
             except json.JSONDecodeError:
-                # Try to extract JSON from response if wrapped in other text
+                
                 import re
                 json_match = re.search(r'\{.*\}', content, re.DOTALL)
                 if json_match:
@@ -404,6 +407,18 @@ JSON Response:"""
             logger.error(f"Error extracting clauses: {e}")
             return []
     
+    def _normalize_llm_result(self, llm_result, supporting_evidence):
+        """Ensure all required fields are present and types are correct for QueryResponse."""
+        return {
+            "answer": llm_result.get("answer", "No answer provided"),
+            "confidence_score": float(llm_result.get("confidence_score", 0.5)),
+            "supporting_evidence": supporting_evidence,
+            "decision_rationale": llm_result.get("decision_rationale", "No rationale provided"),
+            "relevant_clauses": llm_result.get("relevant_clauses", []),
+            "conditions_and_exclusions": llm_result.get("conditions_and_exclusions", []),
+            "recommendations": llm_result.get("recommendations", []),
+        }
+
     def generate_response(self, query: str, retrieved_chunks: List[RetrievalResult]) -> QueryResponse:
         """Generate comprehensive response using Groq LLM."""
         start_time = datetime.now()
@@ -469,56 +484,57 @@ Guidelines:
 JSON Response:"""
         
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=min(2000, self.get_max_tokens() - self.count_tokens(prompt)),
-                top_p=0.9
+            response = self.model.generate_content(
+                contents=[{"role": "user", "parts": [prompt]}],
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.1,
+                    max_output_tokens=min(2000, self.get_max_tokens() - self.count_tokens(prompt)),
+                )
             )
-            
             # Parse LLM response with robust error handling
-            content = response.choices[0].message.content.strip()
-            
+            content = response.text.strip()
             try:
                 llm_result = json.loads(content)
             except json.JSONDecodeError:
-                # Try to extract JSON from response if wrapped in other text
                 import re
+                logger.warning(f"Raw LLM response could not be parsed as JSON: {content}")
                 json_match = re.search(r'\{.*\}', content, re.DOTALL)
                 if json_match:
-                    llm_result = json.loads(json_match.group())
+                    try:
+                        llm_result = json.loads(json_match.group())
+                    except Exception as e2:
+                        logger.warning(f"Secondary JSON extraction failed: {e2}")
+                        llm_result = None
                 else:
-                    # Fallback: create structured response from text
-                    logger.warning("Could not parse LLM response as JSON, creating fallback response")
-                    llm_result = {
-                        "answer": content[:500] if content else "No response generated",
-                        "confidence_score": 0.3,
-                        "decision_rationale": "Response could not be parsed as structured JSON",
-                        "relevant_clauses": [],
-                        "conditions_and_exclusions": [],
-                        "recommendations": ["Please retry the query"]
-                    }
-            
+                    llm_result = None
+            if not llm_result:
+                logger.warning("Could not parse LLM response as JSON, creating fallback response")
+                llm_result = {
+                    "answer": content[:500] if content else "No response generated",
+                    "confidence_score": 0.3,
+                    "decision_rationale": "Response could not be parsed as structured JSON",
+                    "relevant_clauses": [],
+                    "conditions_and_exclusions": [],
+                    "recommendations": ["Please retry the query"]
+                }
+            # Normalize to ensure all required fields are present
+            llm_result = self._normalize_llm_result(llm_result, supporting_evidence)
             processing_time = int((datetime.now() - start_time).total_seconds() * 1000)
-            
             return QueryResponse(
                 query=query,
-                answer=llm_result.get("answer", "No answer provided"),
-                confidence_score=float(llm_result.get("confidence_score", 0.5)),
-                supporting_evidence=supporting_evidence,
-                decision_rationale=llm_result.get("decision_rationale", "No rationale provided"),
-                relevant_clauses=llm_result.get("relevant_clauses", []),
-                conditions_and_exclusions=llm_result.get("conditions_and_exclusions", []),
-                recommendations=llm_result.get("recommendations", []),
+                answer=llm_result["answer"],
+                confidence_score=llm_result["confidence_score"],
+                supporting_evidence=llm_result["supporting_evidence"],
+                decision_rationale=llm_result["decision_rationale"],
+                relevant_clauses=llm_result["relevant_clauses"],
+                conditions_and_exclusions=llm_result["conditions_and_exclusions"],
+                recommendations=llm_result["recommendations"],
                 timestamp=datetime.now().isoformat(),
                 processing_time_ms=processing_time
             )
-            
         except Exception as e:
             logger.error(f"Error generating Groq LLM response: {e}")
             processing_time = int((datetime.now() - start_time).total_seconds() * 1000)
-            
             return QueryResponse(
                 query=query,
                 answer="Error processing query with Groq LLM. Please try again.",
@@ -535,11 +551,11 @@ JSON Response:"""
 class IntelligentQuerySystem:
     """Main system orchestrating document processing, retrieval, and response generation."""
     
-    def __init__(self, groq_api_key: str, cache_dir: str = "./cache", model: str = "llama3-70b-8192"):
+    def __init__(self, cache_dir: str = "./cache", model: str = "gemini-1.0-pro"):
         self.document_processor = DocumentProcessor()
         self.text_chunker = TextChunker()
         self.vector_db = VectorDatabase()
-        self.llm_processor = LLMProcessor(groq_api_key, model)
+        self.llm_processor = LLMProcessor(model)
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(exist_ok=True)
         
@@ -684,9 +700,8 @@ class IntelligentQuerySystem:
 def main():
     """Usage of the Intelligent Query System with Groq."""
     system = IntelligentQuerySystem(
-        groq_api_key="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",
         cache_dir="./query_system_cache",
-        model="llama3-70b-8192" 
+        model="gemini-1.0-pro" 
     )
     
     
@@ -720,7 +735,7 @@ def main():
     batch_responses = system.batch_query(sample_queries)
     results = {
         "llm_provider": "Groq",
-        "model_used": system.llm_processor.model,
+        "model_used": system.llm_processor.model.model_name,
         "queries_processed": len(batch_responses),
         "timestamp": datetime.now().isoformat(),
         "responses": [asdict(response) for response in batch_responses]

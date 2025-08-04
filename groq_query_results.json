@@ -1,0 +1,242 @@
+{
+  "llm_provider": "Groq",
+  "model_used": "models/gemini-2.5-flash",
+  "queries_processed": 4,
+  "timestamp": "2025-08-04T15:56:20.430767",
+  "responses": [
+    {
+      "query": "Does this policy cover knee surgery, and what are the conditions?",
+      "answer": "```json\n{\n    \"answer\": \"Yes, this policy covers knee surgery, specifically 'Treatment for joint replacement', under certain conditions.\",\n    \"confidence_score\": 0.95,\n    \"decision_rationale\": \"The policy explicitly lists 'Treatment for joint replacement' under its 'Specified disease/procedure waiting period' (Source 4, Section 6.3.f.ii.1). This indicates that it is a covered procedure, subject to the stated conditions. The general operative clause also states that the company indemnifies medi",
+      "confidence_score": 0.3,
+      "supporting_evidence": [
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_0",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 1 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.5019108653068542,
+          "page_number": 1,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_11_sub_1",
+          "content": "received within the grace Period, the Policy will get cancelled ab-initio . 10.17. Withdrawal of Product i. In the li kelihood of this product being withdrawn in future, the Company will intimate the ...",
+          "relevance_score": 0.44527122378349304,
+          "page_number": 12,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_7",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 8 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.44162437319755554,
+          "page_number": 8,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_6",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 7 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.43174195289611816,
+          "page_number": 7,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_4",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 5 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.4286753535270691,
+          "page_number": 5,
+          "section_title": null
+        }
+      ],
+      "decision_rationale": "Response could not be parsed as structured JSON",
+      "relevant_clauses": [],
+      "conditions_and_exclusions": [],
+      "recommendations": [
+        "Please retry the query"
+      ],
+      "timestamp": "2025-08-04T15:55:56.879234",
+      "processing_time_ms": 11534
+    },
+    {
+      "query": "What is the process for filing a workers compensation claim?",
+      "answer": "The provided documents pertain to an \"Arogya Sanjeevani Policy - National,\" which is a health insurance policy. They do not contain any information regarding the process for filing a workers' compensation claim.",
+      "confidence_score": 1.0,
+      "supporting_evidence": [
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_9",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 10 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V022...",
+          "relevance_score": 0.4115482270717621,
+          "page_number": 10,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_0",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 1 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.3311973214149475,
+          "page_number": 1,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_6",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 7 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.32056501507759094,
+          "page_number": 7,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_10_sub_0",
+          "content": "National Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no. CBD -81, New Town, Kolkata - 700156  Page 11 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V022425...",
+          "relevance_score": 0.31172093749046326,
+          "page_number": 11,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_4",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 5 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.3093988299369812,
+          "page_number": 5,
+          "section_title": null
+        }
+      ],
+      "decision_rationale": "The query specifically asks for the process of filing a 'workers' compensation claim'. A comprehensive review of all provided sources (policy1_page_9, policy1_page_0, policy1_page_6, policy1_page_10_sub_0, policy1_page_4) confirms that they are excerpts from an 'Arogya Sanjeevani Policy - National'. This policy is explicitly identified as a health insurance policy, covering medical expenses for illness or injury requiring hospitalization. The term 'workers' compensation' or any related procedures for such claims are not mentioned or described anywhere within the provided context. Therefore, the requested information is not available in the given documents.",
+      "relevant_clauses": [],
+      "conditions_and_exclusions": [],
+      "recommendations": [
+        "To obtain information on the process for filing a workers' compensation claim, please provide documents specifically related to workers' compensation policies, employer guidelines, or relevant labor and employment laws.",
+        "Clarify if the query was intended to ask about the claim process for the 'Arogya Sanjeevani Policy' (health insurance) instead of workers' compensation, as the provided documents detail health claim procedures."
+      ],
+      "timestamp": "2025-08-04T15:56:05.361935",
+      "processing_time_ms": 8261
+    },
+    {
+      "query": "What are the data retention requirements for customer information?",
+      "answer": "The provided context does not contain any information regarding data retention requirements for customer information. The documents detail policy terms, claim procedures, definitions, and grievance redressal, but do not specify how long customer data or policy records must be retained by the company.",
+      "confidence_score": 0.9,
+      "supporting_evidence": [
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_11_sub_1",
+          "content": "received within the grace Period, the Policy will get cancelled ab-initio . 10.17. Withdrawal of Product i. In the li kelihood of this product being withdrawn in future, the Company will intimate the ...",
+          "relevance_score": 0.23437552154064178,
+          "page_number": 12,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_8",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 9 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.19235189259052277,
+          "page_number": 9,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_13",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 14 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V022...",
+          "relevance_score": 0.18844638764858246,
+          "page_number": 14,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_3",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 4 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.17949454486370087,
+          "page_number": 4,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_4",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 5 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.1772300899028778,
+          "page_number": 5,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_12",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 13 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V022...",
+          "relevance_score": 0.1722334623336792,
+          "page_number": 13,
+          "section_title": null
+        }
+      ],
+      "decision_rationale": "I have thoroughly reviewed all provided sources (Source 1: policy1_page_11_sub_1, Source 2: policy1_page_8, Source 3: policy1_page_13, Source 4: policy1_page_3, Source 5: policy1_page_4, Source 6: policy1_page_12). None of these documents contain clauses or sections that specify data retention periods for customer information, policy records, or claim documents. The context focuses on policy benefits, terms, conditions, and procedures for claims and policy management, but not on the company's internal data retention policies.",
+      "relevant_clauses": [],
+      "conditions_and_exclusions": [],
+      "recommendations": [
+        "To determine the data retention requirements for customer information, refer to the company's internal data privacy policy, record retention schedule, or relevant regulatory compliance documents (e.g., IRDAI guidelines, data protection laws applicable in India).",
+        "If this information is critical for compliance, consult with the legal or compliance department to understand the specific regulations governing data retention for insurance companies."
+      ],
+      "timestamp": "2025-08-04T15:56:10.538181",
+      "processing_time_ms": 4976
+    },
+    {
+      "query": "What benefits are available for remote employees?",
+      "answer": "Based on the provided documents, which detail the \"Arogya Sanjeevani Policy - National\" health insurance, there are no specific benefits mentioned or differentiated for \"remote employees.\" The documents outline general health insurance coverage available to all Insured Persons, including hospitalization expenses (room rent, ICU, surgeon fees, anesthesia, diagnostics), AYUSH treatment, cataract treatment, pre-hospitalization and post-hospitalization medical expenses, and coverage for certain modern treatments. These benefits are not tied to an employee's remote work status.",
+      "confidence_score": 1.0,
+      "supporting_evidence": [
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_14",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 15 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V022...",
+          "relevance_score": 0.16497895121574402,
+          "page_number": 15,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_4",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 5 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.1533469557762146,
+          "page_number": 5,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_3",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 4 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.14882662892341614,
+          "page_number": 4,
+          "section_title": null
+        },
+        {
+          "source": "Documents/policy1.pdf",
+          "chunk_id": "policy1_page_5",
+          "content": " \nNational Insurance Co. Ltd.  \nRegd. & Head Office: Premises No. 18 -0374,  \nPlot no.  CBD -81, New Town, Kolkata - 700156  Page 6 of 16 Arogya Sanjeevani  Policy  - National  \nUIN: NICHLIP25041V0224...",
+          "relevance_score": 0.1478467434644699,
+          "page_number": 6,
+          "section_title": null
+        }
+      ],
+      "decision_rationale": "The provided context consists of excerpts from a health insurance policy document. I have thoroughly reviewed all pages (policy1_page_14, policy1_page_4, policy1_page_3, policy1_page_5) for any mention of 'remote employees,' 'remote work,' or any benefits specifically designated for such a category of employees. No such terms or distinctions were found. The policy details general health insurance coverage, exclusions, and conditions applicable to all 'Insured Persons' without regard to their employment type or location.",
+      "relevant_clauses": [
+        "4. COVERAGE: The covers listed below are in-built Policy benefits and shall be available to all Insured Persons in accordance with the procedures set out in this Policy. (Source 2: Documents/policy1.pdf - policy1_page_4)",
+        "4.1. Hospitalization: The Company shall indemnify Medical Expense incurred for Hospitalization of the Insured Person during the Policy Period, up to the Sum Insured and Cumulative Bonus specified in the Policy Schedule, for, i. Room Rent, Boarding, Nursing Expenses... ii. Intensive Care Unit (ICU) / Intensive Cardiac Care Unit (ICCU) expenses... iii. Surgeon, Anesthetist, Medical Practitioner, Consultants, Specialist Fees... iv. Anesthesia, blood, oxygen, operation theatre charges, surgical appliances, medicines and drugs, costs towards diagnostics, diagnostic imaging modalities and such similar other expenses. (Source 2: Documents/policy1.pdf - policy1_page_4)",
+        "4.2. AYUSH Treatment: The Company shall indemnify Medical Expenses incurred for Inpatient Care treatment under Ayurveda, Yoga and Naturopathy, Unani, Sidha and Homeopathy systems of medicines during each Policy Period up to the limit of sum insured as specified in the policy schedule in any AYUSH Hospital. (Source 2: Documents/policy1.pdf - policy1_page_4)",
+        "4.4. Pre Hospitalisation: The Company shall indemnify pre-hospitalization medical expenses incurred, related to an admissible hospitalization requiring Inpatient Care, for a fixed period of 30 days prior to the date of admissible Hospitalization covered under the Policy. (Source 2: Documents/policy1.pdf - policy1_page_4)",
+        "4.5. Post Hospitalisation: The Company shall indemnify post hospitalization medical expenses incurred, related to an admissible hospitalization requiring inpatient care, for a fixed period of 60 days from the date of discharge from the hospital, following an admissible hospitalization covered under the Policy. (Source 2: Documents/policy1.pdf - policy1_page_4)",
+        "4.6. Modern Treatment: The following procedures will be covered (wherever medically indicated) either as in patient or as part of day care treatment in a hospital subject to the limit of 50% of the Sum Insured for the related modern procedure/ component/ medicine of each Modern Treatment during the Policy Period. (Source 4: Documents/policy1.pdf - policy1_page_5)"
+      ],
+      "conditions_and_exclusions": [
+        "List I \u2013 List of which coverage is not available in the policy (e.g., EMAIL / INTERNET CHARGES, TELEPHONE CHARGES, CONVEYANCE CHARGES, etc.) (Source 1: Documents/policy1.pdf - policy1_page_14)",
+        "6.1. Pre-Existing Diseases (Excl 01): Expenses related to the treatment of a Pre-Existing Disease (PED) and its direct complications shall be excluded until the expiry of 36 (thirty six) months of continuous coverage after the date of inception of the first policy with us. (Source 4: Documents/policy1.pdf - policy1_page_5)",
+        "6.2. First 30 days waiting period (Excl 03): Expenses related to the treatment of any illness within 30 days from the first policy commencement date shall be excluded. (Source 4: Documents/policy1.pdf - policy1_page_5)"
+      ],
+      "recommendations": [
+        "To determine benefits specifically for remote employees, consult company-specific HR policies, employee handbooks, or employment contracts, as this health insurance policy does not differentiate benefits based on remote work status.",
+        "If the query pertains to reimbursement of expenses like internet or telephone charges for remote work, note that 'EMAIL / INTERNET CHARGES' and 'TELEPHONE CHARGES' are explicitly listed as items for which coverage is not available under this specific health insurance policy (Source 1: Documents/policy1.pdf - policy1_page_14)."
+      ],
+      "timestamp": "2025-08-04T15:56:20.430711",
+      "processing_time_ms": 9661
+    }
+  ]
+}
