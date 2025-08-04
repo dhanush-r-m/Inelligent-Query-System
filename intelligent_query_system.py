@@ -388,12 +388,12 @@ JSON Response:"""
             
             content = response.text.strip()
             
-            # Try to parse JSON, with fallback handling
+            
             try:
                 result = json.loads(content)
                 return result.get("clauses", [])
             except json.JSONDecodeError:
-                # Try to extract JSON from response if wrapped in other text
+                
                 import re
                 json_match = re.search(r'\{.*\}', content, re.DOTALL)
                 if json_match:

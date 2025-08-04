@@ -10,7 +10,7 @@ import uvicorn
 
 load_dotenv()
 
-# Initialize the query system
+
 gemini_api_key = os.environ.get("GOOGLE_API_KEY")
 if not gemini_api_key:
     raise ValueError("GEMINI_API_KEY not found in environment variables")
@@ -20,7 +20,7 @@ query_system = IntelligentQuerySystem(
     model="gemini-1.0-pro"
 )
 
-# Load knowledge base on startup
+
 try:
     query_system.load_knowledge_base()
 except Exception as e:
